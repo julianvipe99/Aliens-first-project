@@ -27,17 +27,9 @@ public class Enemy : MonoBehaviour
 
 
         lives = new List<GameObject>();
+        setLives();
 
-        for (int i = 0; i < nLives; i++)
-        {
-            lives.Add(Instantiate(live, this.transform.position - new Vector3(sizeX - (0.5f * i), sizeY - (1.6f)), this.transform.rotation));
-
-        }
-
-        foreach (GameObject temp in lives)
-        {
-            temp.transform.parent = this.transform;
-        }
+        
     }
 
     // Update is called once per frame
@@ -51,7 +43,34 @@ public class Enemy : MonoBehaviour
         changeDir(transform.position.x);
         
     }
+    void setLives()
+    {
+        int jumpLine = 0;
+        float line = 0;
+        float col = 0;
+        for (int i = 0; i < nLives; i++)
+        {
+            if (jumpLine < 3)
+            {
+                
+                lives.Add(Instantiate(live, this.transform.position - new Vector3(sizeX - (0.1f +col), sizeY - (1.6f+line)), Quaternion.identity));
+                jumpLine++;
+                col=0.5f+col;
+            }
+            else
+            {
+                lives.Add(Instantiate(live, this.transform.position - new Vector3(sizeX - (0.1f + col), sizeY - (1.6f + line)), Quaternion.identity));
+                jumpLine = 0;
+                line=0.5f+line;
+                col = 0;
+            }
+        }
 
+        foreach (GameObject temp in lives)
+        {
+            temp.transform.parent = this.transform;
+        }
+    }
     public void changeDir(float d)
     {
         if (d >= maxX)
