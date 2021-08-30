@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] bool direction;
-    [SerializeField] int nLives;
+    [SerializeField] int nLives = 1;
     [SerializeField] GameObject live;
 
     float maxX, minX;
@@ -37,8 +37,6 @@ public class Enemy : MonoBehaviour
         foreach (GameObject temp in lives)
         {
             temp.transform.parent = this.transform;
-
-
         }
     }
 
@@ -73,6 +71,10 @@ public class Enemy : MonoBehaviour
             if (nLives == 0)
             {
                 Destroy(this.gameObject);
+                for(int i = 0; i < lives.Count; i++)
+                {
+                    Destroy(lives[i].gameObject);
+                }
             }
         }
     }
