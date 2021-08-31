@@ -14,6 +14,12 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject blast;
     [SerializeField] float nextFire;
 
+    [Header("Canion")]
+    [SerializeField] GameObject canion;
+    float downTime, upTime, pressTime = 0;
+    [SerializeField] float countDown = 2.0f;
+    bool ready = false;
+
     float xMin, xMax;
 
     float yMin, yMax;
@@ -21,6 +27,8 @@ public class Player : MonoBehaviour
     float sizeX, sizeY;
 
     float canFire;
+
+    bool isBlast=false;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +53,20 @@ public class Player : MonoBehaviour
     void Update()
     {
         Move();
-        fire();
+        changeFire();
+        if(isBlast)
+            fireBlast();
+        else
+            fireCanion();
+    }
+
+    void changeFire()
+    {
+        if (Input.GetKeyDown(KeyCode.Z) && isBlast == false)
+            isBlast = true;
+        else if (Input.GetKeyDown(KeyCode.Z) && isBlast == true)
+            isBlast = false;
+
     }
 
     private void Move()
@@ -59,12 +80,33 @@ public class Player : MonoBehaviour
 
     }
 
-    private void fire()
+    private void fireBlast()
     {
         if (Input.GetKeyDown(KeyCode.Space) && Time.time>=canFire)
         {
             Instantiate(blast,transform.position - new Vector3(0,sizeY/2),transform.rotation);
             canFire=nextFire + Time.time;
         }
+    }
+
+    private void fireCanion()
+    {
+
+        if (Input.GetKeyDown(KeyCode.Space) && ready == false)
+        {
+            downTime = Time.time;
+            pressTime = downTime + countDown;
+            ready = true;
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            ready = false;
+        }
+        if (Time.time >= pressTime && ready == true)
+        {
+            ready = false;
+            Instantiate(canion, transform.position - new Vector3(0, sizeY / 2), transform.rotation);
+        }
+        
     }
 }

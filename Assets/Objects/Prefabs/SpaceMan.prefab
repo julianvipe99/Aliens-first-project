@@ -99,3 +99,6 @@ MonoBehaviour:
   moveSpeed: 15
   bottomPadding: 6
   blast: {fileID: 7357255020849207297, guid: 09fe57b11d1e6ca4b8024f7ed265f017, type: 3}
+  nextFire: 0.5
+  canion: {fileID: 2629751713367245631, guid: 758266110979d3344a335fb6824c9399, type: 3}
+  countDown: 2

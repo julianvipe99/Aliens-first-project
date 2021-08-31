@@ -330,7 +330,7 @@ Transform:
   - {fileID: 1922094310}
   - {fileID: 975705789}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &251106986
 GameObject:
@@ -1069,7 +1069,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6174106662377988025, guid: 3b59e1b2c78e0d041a1eec4b8160d866, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6174106662377988025, guid: 3b59e1b2c78e0d041a1eec4b8160d866, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1122,6 +1122,10 @@ PrefabInstance:
     - target: {fileID: 6174106662377988039, guid: 3b59e1b2c78e0d041a1eec4b8160d866, type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174106662377988039, guid: 3b59e1b2c78e0d041a1eec4b8160d866, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b59e1b2c78e0d041a1eec4b8160d866, type: 3}
@@ -2059,10 +2063,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8179584309807474409, guid: 23ca98741dfd49b4f8dec6628c715626, type: 3}
-      propertyPath: nextFire
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 8179584309807474410, guid: 23ca98741dfd49b4f8dec6628c715626, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2105,10 +2105,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8179584309807474410, guid: 23ca98741dfd49b4f8dec6628c715626, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8179584309807474411, guid: 23ca98741dfd49b4f8dec6628c715626, type: 3}
-      propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8179584309807474412, guid: 23ca98741dfd49b4f8dec6628c715626, type: 3}

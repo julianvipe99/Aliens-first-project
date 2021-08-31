@@ -81,16 +81,39 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Blast")){
+        if (collision.gameObject.CompareTag("Canion")){
 
-            lives[nLives-1].GetComponent<Live>().deadHeart();
-            nLives--;
-
+            if (nLives > 1)
+            {
+                lives[nLives - 1].GetComponent<Live>().deadHeart();
+                lives[nLives - 2].GetComponent<Live>().deadHeart();
+                nLives = nLives - 2;
+            }
+            else
+            {
+                lives[nLives - 1].GetComponent<Live>().deadHeart();
+                nLives = nLives - 1;
+            }
             Debug.Log(nLives);
-            if (nLives == 0)
+            if (nLives <= 0)
             {
                 Destroy(this.gameObject);
                 for(int i = 0; i < lives.Count; i++)
+                {
+                    Destroy(lives[i].gameObject);
+                }
+            }
+        }
+        if (collision.gameObject.CompareTag("Blast"))
+        {
+            lives[nLives - 1].GetComponent<Live>().deadHeart();
+            nLives = nLives - 1;
+
+            Debug.Log(nLives);
+            if (nLives <= 0)
+            {
+                Destroy(this.gameObject);
+                for (int i = 0; i < lives.Count; i++)
                 {
                     Destroy(lives[i].gameObject);
                 }
